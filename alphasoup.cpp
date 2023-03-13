@@ -64,7 +64,7 @@ void init() {
 }
 
 //------------------------------------------------------------------------------
-// fill a character array with random letters
+// fill passed character array with random letters
 // 
 // #TODO pass array size parameter
 //------------------------------------------------------------------------------
@@ -82,16 +82,16 @@ void get_letters(char b[], int size) {
 }
 
 //------------------------------------------------------------------------------
-// display letters array as four-letter words
+// display passed letters array as four-letter words
 // 
 // #TODO pass array size parameter
 //------------------------------------------------------------------------------
-void display_words(char b[], int size) {
+void display_words(char letters[], int size) {
 
     std::cout << '\n';
 
-    for (int i = 0, index = 0; i < size; i++) {
-        std::cout << b[i];
+    for (int i = 0, index = 0; i < size; ++i) {
+        std::cout << letters[i];
 
         if (++index % 4 == 0) {
             std::cout << " ";
@@ -104,12 +104,12 @@ void display_words(char b[], int size) {
 //------------------------------------------------------------------------------
 // count letter occurrences in an array of char
 //------------------------------------------------------------------------------
-void count_letters(char b[], int size) {
+void count_letters(char letters[], int size) {
     int counts[ALPHABET_SIZE] { 0 };
 
     // store letter counts
     for (int i = 0; i < size; ++i) {
-        counts[b[i] - 'a']++;
+        counts[letters[i] - 'a']++;
     }
 
     std::cout << '\n';
@@ -131,7 +131,7 @@ void count_letters(char b[], int size) {
     //	int count = 0;
 
     //	for (int k = 0; k < MAX_LETTERS; k++) {
-    //		if (b[k] == letter) {
+    //		if (letters[k] == letter) {
     //			count++;
     //		}
     //	}
