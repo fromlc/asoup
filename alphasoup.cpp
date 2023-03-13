@@ -25,9 +25,9 @@ constexpr int ALPHABET_SIZE = 26;
 // local function prototypes
 //------------------------------------------------------------------------------
 void init();
-void count_letters(char[]);
-void get_letters(char[]);
-void display_words(char[]);
+void get_letters(char[], int);
+void display_words(char[], int);
+void count_letters(char[], int);
 
 //------------------------------------------------------------------------------
 // entry point
@@ -38,13 +38,13 @@ int main() {
 
     // fill buffer with random letters
     char a[MAX_LETTERS];
-    get_letters(a);
+    get_letters(a, MAX_LETTERS);
 
     // display the array as four-letter words
-    display_words(a);
+    display_words(a, MAX_LETTERS);
 
     // count letter occurrences and display results
-    count_letters(a);
+    count_letters(a, MAX_LETTERS);
 
     std::cout << '\n';
     std::cin.get();
@@ -58,7 +58,7 @@ int main() {
 void init() {
  
     // seed random number generator
-    srand((unsigned int)time(0));
+    srand((unsigned int) time(0));
 
     std::cout << "\nAlphabet Soup!\n";
 }
@@ -68,11 +68,11 @@ void init() {
 // 
 // #TODO pass array size parameter
 //------------------------------------------------------------------------------
-void get_letters(char b[]) {
+void get_letters(char b[], int size) {
     // #TODO test assert
     assert(b != nullptr);
 
-    for (int i = 0; i < MAX_LETTERS; i++) {
+    for (int i = 0; i < size; i++) {
 
         // get random number [0-25], convert to lowercase letter
         int x = rand() % ALPHABET_SIZE + 'a';
@@ -86,11 +86,11 @@ void get_letters(char b[]) {
 // 
 // #TODO pass array size parameter
 //------------------------------------------------------------------------------
-void display_words(char b[]) {
+void display_words(char b[], int size) {
 
     std::cout << '\n';
 
-    for (int i = 0, index = 0; i < MAX_LETTERS; i++) {
+    for (int i = 0, index = 0; i < size; i++) {
         std::cout << b[i];
 
         if (++index % 4 == 0) {
@@ -104,11 +104,11 @@ void display_words(char b[]) {
 //------------------------------------------------------------------------------
 // count letter occurrences in an array of char
 //------------------------------------------------------------------------------
-void count_letters(char b[]) {
+void count_letters(char b[], int size) {
     int counts[ALPHABET_SIZE] { 0 };
 
     // store letter counts
-    for (int i = 0; i < MAX_LETTERS; ++i) {
+    for (int i = 0; i < size; ++i) {
         counts[b[i] - 'a']++;
     }
 
