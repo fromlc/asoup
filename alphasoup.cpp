@@ -24,27 +24,27 @@ constexpr int ALPHABET_SIZE = 26;
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
-void init();
-void get_letters(char[], int);
-void display_words(char[], int);
-void count_letters(char[], int);
+void initApp();
+void getLetters(char[], int);
+void displayWords(char[], int);
+void displayLetterCounts(char[], int);
 
 //------------------------------------------------------------------------------
 // entry point
 //------------------------------------------------------------------------------
 int main() {
 
-    init();
+    initApp();
 
     // fill buffer with random letters
     char a[MAX_LETTERS];
-    get_letters(a, MAX_LETTERS);
+    getLetters(a, MAX_LETTERS);
 
     // display the array as four-letter words
-    display_words(a, MAX_LETTERS);
+    displayWords(a, MAX_LETTERS);
 
     // count letter occurrences and display results
-    count_letters(a, MAX_LETTERS);
+    displayLetterCounts(a, MAX_LETTERS);
 
     std::cout << '\n';
     std::cin.get();
@@ -55,7 +55,7 @@ int main() {
 //------------------------------------------------------------------------------
 // app setup tasks
 //------------------------------------------------------------------------------
-void init() {
+void initApp() {
  
     // seed random number generator
     srand((unsigned int) time(0));
@@ -65,14 +65,13 @@ void init() {
 
 //------------------------------------------------------------------------------
 // fill passed character array with random letters
-// 
-// #TODO pass array size parameter
 //------------------------------------------------------------------------------
-void get_letters(char b[], int size) {
+void getLetters(char b[], int size) {
+   
     // #TODO test assert
     assert(b != nullptr);
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; ++i) {
 
         // get random number [0-25], convert to lowercase letter
         int x = rand() % ALPHABET_SIZE + 'a';
@@ -83,10 +82,8 @@ void get_letters(char b[], int size) {
 
 //------------------------------------------------------------------------------
 // display passed letters array as four-letter words
-// 
-// #TODO pass array size parameter
 //------------------------------------------------------------------------------
-void display_words(char letters[], int size) {
+void displayWords(char letters[], int size) {
 
     std::cout << '\n';
 
@@ -104,7 +101,7 @@ void display_words(char letters[], int size) {
 //------------------------------------------------------------------------------
 // count letter occurrences in an array of char
 //------------------------------------------------------------------------------
-void count_letters(char letters[], int size) {
+void displayLetterCounts(char letters[], int size) {
     int counts[ALPHABET_SIZE] { 0 };
 
     // store letter counts
