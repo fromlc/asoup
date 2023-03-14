@@ -66,7 +66,7 @@ void initApp() {
 //------------------------------------------------------------------------------
 // fill passed character array with random letters
 //------------------------------------------------------------------------------
-void getLetters(char b[], int size) {
+void getLetters(char letters[], int size) {
    
     // #TODO test assert
     assert(b != nullptr);
@@ -77,7 +77,7 @@ void getLetters(char b[], int size) {
         // get random number [0-25], convert to lowercase letter
         int x = rand() % ALPHABET_SIZE + 'a';
 
-        b[i] = (char)x;
+        letters[i] = (char)x;
     }
 }
 
