@@ -69,7 +69,7 @@ void initApp() {
 void getLetters(char letters[], int size) {
    
     // #TODO test assert
-    assert(b != nullptr);
+    assert(letters != nullptr);
     assert(ALPHABET_SIZE <= 26);
 
     for (int i = 0; i < size; ++i) {
