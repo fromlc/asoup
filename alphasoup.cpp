@@ -36,8 +36,13 @@ int main() {
 
     initApp();
 
+#if 0
     // fill buffer with random letters
     char a[MAX_LETTERS];
+#else
+    char* a = 0;
+#endif // 0
+
     getLetters(a, MAX_LETTERS);
 
     // display the array as four-letter words
@@ -56,9 +61,9 @@ int main() {
 // app setup tasks
 //------------------------------------------------------------------------------
 void initApp() {
- 
+
     // seed random number generator
-    srand((unsigned int) time(0));
+    srand((unsigned int)time(0));
 
     std::cout << "\nAlphabet Soup!\n";
 }
@@ -67,7 +72,10 @@ void initApp() {
 // fill passed character array with random letters
 //------------------------------------------------------------------------------
 void getLetters(char letters[], int size) {
-   
+
+    // dummy statement for breakpoint
+    int i = 0;
+
     // #TODO test assert
     assert(letters != nullptr);
     assert(ALPHABET_SIZE <= 26);
