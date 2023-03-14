@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <vector>
 
 //------------------------------------------------------------------------------
 // constants
@@ -25,9 +26,9 @@ constexpr int ALPHABET_SIZE = 26;
 // local function prototypes
 //------------------------------------------------------------------------------
 void initApp();
-void getLetters(char[], int);
-void displayWords(char[], int);
-void displayLetterCounts(char[], int);
+void getLetters(std::vector<char>&);
+void displayWords(std::vector<char>&);
+void displayLetterCounts(std::vector<char>&);
 
 //------------------------------------------------------------------------------
 // entry point
@@ -37,14 +38,14 @@ int main() {
     initApp();
 
     // fill buffer with random letters
-    char a[MAX_LETTERS];
-    getLetters(a, MAX_LETTERS);
+    std::vector<char>va(MAX_LETTERS);
+    getLetters(va);
 
     // display the array as four-letter words
-    displayWords(a, MAX_LETTERS);
+    displayWords(va);
 
     // count letter occurrences and display results
-    displayLetterCounts(a, MAX_LETTERS);
+    displayLetterCounts(va);
 
     std::cout << '\n';
     std::cin.get();
@@ -66,30 +67,29 @@ void initApp() {
 //------------------------------------------------------------------------------
 // fill passed character array with random letters
 //------------------------------------------------------------------------------
-void getLetters(char letters[], int size) {
+void getLetters(std::vector<char>& vc) {
    
     // #TODO test assert
-    assert(b != nullptr);
     assert(ALPHABET_SIZE <= 26);
 
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < vc.size(); ++i) {
 
         // get random number [0-25], convert to lowercase letter
         int x = rand() % ALPHABET_SIZE + 'a';
 
-        letters[i] = (char)x;
+        vc.at(i) = (char)x;
     }
 }
 
 //------------------------------------------------------------------------------
 // display passed letters array as four-letter words
 //------------------------------------------------------------------------------
-void displayWords(char letters[], int size) {
+void displayWords(std::vector<char>& vc) {
 
     std::cout << '\n';
 
-    for (int i = 0, index = 0; i < size; ++i) {
-        std::cout << letters[i];
+    for (int i = 0, index = 0; i < vc.size(); ++i) {
+        std::cout << vc.at(i);
 
         if (++index % 4 == 0) {
             std::cout << " ";
@@ -102,12 +102,12 @@ void displayWords(char letters[], int size) {
 //------------------------------------------------------------------------------
 // count letter occurrences in an array of char
 //------------------------------------------------------------------------------
-void displayLetterCounts(char letters[], int size) {
+void displayLetterCounts(std::vector<char>& vc) {
     int counts[ALPHABET_SIZE] { 0 };
 
     // store letter counts
-    for (int i = 0; i < size; ++i) {
-        counts[letters[i] - 'a']++;
+    for (int i = 0; i < vc.size(); ++i) {
+        counts[vc.at(i) - 'a']++;
     }
 
     std::cout << '\n';
